@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+        <title>{% block title %}Accueil{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="/CSS/navbar.css">
+        <link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/2257ebf5f7.js" crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="https://zupimages.net/up/20/43/h897.png" />
+    </head>
+    <body>
+        <div class="header">
+            <div id="top-header">
+                <div class="logoList">
+                    <a class="icon" href="https://fr-fr.facebook.com/">
+                        <img class="icon" src="https://zupimages.net/up/19/40/cmjt.png">
+                    </a>
+                    <a href="https://twitter.com/login?lang=fr" >
+                        <img class="icon" src="https://zupimages.net/up/20/43/964p.png">
+                    </a>
+                </div>   
+            </div>
+            <div id="navbar">
+                <div id="allnav">
+                    <img id="logo" src="https://zupimages.net/up/20/43/h897.png">
+                    <nav id="nav">
+                        {% if not app.user %}
+                        <div class="menu">
+                            <a href=" {{path('home')}} ">Nos Voitures</a>
+                        </div>
+                        <div class="menu">
+                            <a href=" {{path('inscription')}} ">Inscription</a>  
+                        </div>
+                        <div class="menu">
+                            <a id="connexion" href=" {{path('app_login')}} ">Connexion</a>
+                        </div>
+                        {% else %}
+                        <div class="menu">
+                            <a href=" {{path('home')}} ">Nos Voitures</a>
+                        </div>
+                        <div class="menu">
+                            <a href=" {{path('moncompte')}} ">Mes Locations</a>  
+                        </div>
+                        <div class="menu">
+                            <a id="connexion" href=" {{path('app_logout')}} ">Déconnexion</a>
+                        </div>
+                        {% endif %}
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+        {% block body %}{% endblock %}
+        </div>
+        <div id="footer">
+            <div class="container con-footer">
+                <div style="width: 200px;">
+                    <h4>Rental Cars</h4>
+                    <p> Rental Cars est un loueur de voiture sérieux et efficace spécialisé dans la location pour professionnels</p>
+                </div>
+                <div style="width: 200px;">
+                    <h4>Accès directs</h4>
+                    <p><a href="">Accès et contacts</a> <br> <a href="">Les projets en cours</a> <br> <a href="">Mentions légales</a></p>
+                </div>
+                <div id="footer-img">
+                    <img src="https://zupimages.net/up/20/43/h897.png" alt="">
+                </div>
+            </div>
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
