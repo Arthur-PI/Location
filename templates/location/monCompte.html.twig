@@ -5,26 +5,50 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Tout les vehicules louer par {{app.user.username}} </h1>
-    <div class="content">
-        {% for i in 0..taille %}
-            <div class="voiture">
-                <h3> {{vehicules[i].carac['marque']}} {{ vehicules[i].modele }} </h3>
-                <a href="#" class="pdf"><span class="material-icons">request_page</span></a> 
-                <div>
-                    <img class="icons" src="https://img.icons8.com/pastel-glyph/24/000000/gearbox-selector.png"/>
-                    <span class="badge badge-pill badge-success">{{vehicules[i].carac['boite']}}</span>
-                    <img class="icons" src="https://img.icons8.com/small/24/000000/engine.png"/>
-                    <span class="badge badge-pill badge-success">{{vehicules[i].carac['moteur']}}</span>
-                    <img class="icons" src="https://img.icons8.com/material-rounded/24/000000/conference-call.png"/>
-                    <span class="badge badge-pill badge-success">{{vehicules[i].carac['nbPlaces']}} Places</span>
-                    <img class="icons" src="https://img.icons8.com/material-outlined/24/000000/car-door.png"/>
-                    <span class="badge badge-pill badge-success">{{vehicules[i].carac['nbPortes']}} Portes</span>
-                    <span class="badge badge-pill badge-success">{{vehicules[i].carac['couleur']}}</span>
+{% if taille > 0 %}
+<div class="allLoc">
+    <h1 id="titre">Tout les vehicules louer par {{app.user.username}} </h1>
+    <a id="facture" href="#"><span class="material-icons ">request_page</span></a> 
+    <div class="carte">
+    {% for i in 0..taille %}
+        <div class="annonce">
+            <h2> {{vehicules[i].carac['marque']}} {{ vehicules[i].modele }} </h2>
+            <div class="int-annonce">
+                <div class="stats">
+                    <metadata>Date debut: {{factures[i].dated | date('d/m/Y')}} </metadata>
+                    <metadata>Date fin: {{factures[i].datef | date('d/m/Y')}} </metadata>
+                    <div class="carac">
+                        <img class="icons" src="https://img.icons8.com/pastel-glyph/24/000000/gearbox-selector.png"/>
+                        <span>{{vehicules[i].carac['boite']}}</span>
+                    </div>
+                    <div class="carac">
+                        <img class="icons" src="https://img.icons8.com/small/24/000000/engine.png"/>
+                        <span>{{vehicules[i].carac['moteur']}}</span>
+                    </div>
+                    <div class="carac">
+                        <img class="icons" src="https://img.icons8.com/material-rounded/24/000000/conference-call.png"/>
+                        <span>{{vehicules[i].carac['nbPlaces']}} Places</span>
+                    </div>
+                    <div class="carac">
+                        <img class="icons" src="https://img.icons8.com/material-outlined/24/000000/car-door.png"/>
+                        <span>{{vehicules[i].carac['nbPortes']}} Portes</span>
+                    </div>
+                    <div class="money carac">
+                        {% if factures[i].payee %}
+                        <img src="https://img.icons8.com/ios/36/000000/check-dollar.png"/>
+                        {% else %}
+                        <img src="https://img.icons8.com/ios/36/000000/delete-dollar.png"/>
+                        {% endif %}
+                        <span>{{factures[i].montant}}</span>
+                    </div>
                 </div>
-                <img src="{{ vehicules[i].image }}" alt="imageVoiture">
-                <div><metadata>Date fin de location: {{ factures[i].dateF | date('d/m/Y') }}</metadata></div>
+                <div class="image">
+                    <img src="{{ vehicules[i].image }}" alt="imageVoiture">
+                </div>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+    </div> 
+</div>
+{% endif %}
 {% endblock %}

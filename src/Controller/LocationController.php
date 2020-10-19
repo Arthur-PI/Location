@@ -38,8 +38,6 @@ class LocationController extends AbstractController
                         ->getRepository(Facture::class)
                         ->findBy(["idUser" => $this->getUser()->getNumUser()]);
 
-        
-        dump($factures);
         $repo = $this->getDoctrine()
                      ->getRepository(Vehicule::class);
         
@@ -49,7 +47,6 @@ class LocationController extends AbstractController
             $vehicules[$i] = $repo->findOneBy(['id' => $facture->getIdVehic()]);
             $i++;
         }
-
         return $this->render('location/monCompte.html.twig', [
             'factures' => $factures,
             'vehicules' => $vehicules,
