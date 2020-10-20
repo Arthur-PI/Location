@@ -7,7 +7,7 @@
 {% block body %}
 {% if taille > 0 %}
 <div class="allLoc">
-    <h1 id="titre">Tout les vehicules louer par {{app.user.username}} </h1>
+    <div id="titre"><h1>Vehicules loues par {{app.user.username}} </h1></div> 
     <a id="facture" href="#"><span class="material-icons ">request_page</span></a> 
     <div class="carte">
     {% for i in 0..taille %}

@@ -7,6 +7,8 @@
     box-sizing: border-box;
     outline: 0;
     transition: all 0.5s;
+    margin-block-end: 0;
+    line-height: 100%;
 }
 
 
@@ -102,7 +104,6 @@ nav a{
 /*---- FOOTER ----*/
 
 #footer {
-    margin-top: 10px;
     color: white;
     padding-top: 3%;
     padding-bottom: 3%;
@@ -147,6 +148,8 @@ nav a{
 /*---- MAIN ----*/
 
 #main {
-    padding-top: 125px;
-    background-color: transparent;
+    margin-top: 125px;
+    padding-top: 80px;
+    background-color: rgb(233, 233, 233);
+    padding-bottom: 80px;
 }

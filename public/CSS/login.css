@@ -1,0 +1,52 @@
+.auth{
+    width: 50%;
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 25px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.content{
+    border: thick double #ffbc6b;
+    padding: 30px;
+    width: 90%;
+    margin: auto;
+}
+
+.titre{
+    width: 100%;
+    background-color: #ffbc6b;
+    text-align: center;
+    border-radius: 25px;
+    color: white;
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.titre h1{
+    margin-bottom: 0 !important;
+    line-height: 100%;
+}
+
+#auth-form{
+    padding: 40px 10% 0px 10%;
+}
+
+.div-bouton{
+    width: fit-content;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.bouton{
+    background-color: #ffbc6b !important;
+    padding: 10px 35px 10px 35px !important;
+    color: white !important;
+}
+
+.bouton:hover{
+    background-color: #facb95 !important;
+}
