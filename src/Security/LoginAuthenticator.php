@@ -17,6 +17,7 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class LoginAuthenticator extends AbstractFormLoginAuthenticator
 {
@@ -77,6 +78,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
     {
         // Check the user's password or other credentials and return true or false
         // If there are no credentials to check, you can just return true
+        if ( password_hash($credentials['password'], PASSWORD_BCRYPT) == $user->getPassword()) return false;
         return true;
         throw new \Exception('TODO: check the credentials inside '.__FILE__);
     }

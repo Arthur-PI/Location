@@ -104,6 +104,9 @@ class User implements UserInterface
     }
 
     public function getRoles(){
+        if( $this->numUser == "admin"){
+            return ['ROLE_ADMIN'];
+        }
         return ['ROLE_USER'];
     }
 

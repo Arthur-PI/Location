@@ -15,7 +15,7 @@ Go to .env file and make sure the line `DATABASE_URL=mysql://db_user:db_password
 ## Now setup your symfony server and database
 
 Now run this command to start the symfony server `symfony server:start`  
-Open a new terminal and run `php .\bin\console Run doctrine:database:create`  
+Open a new terminal and run `php .\bin\console doctrine:database:create`  
 Run `php .\bin\console make:migration`  
 Run `php .\bin\console doctrine:migrations:migrate`  
 Now go to your PhpMyAdmin select ***location*** database, click import and choose the ***location.sql*** file in the project directory.  

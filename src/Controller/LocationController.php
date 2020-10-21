@@ -59,6 +59,8 @@ class LocationController extends AbstractController
      */
     public function adminVehicule() // Afficher les vehicules disponible de l'admin (option pour supprimer/modifier des vehicules)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
+
         return $this->render('location/adminVehicule.html.twig', [
             'controller_name' => 'LocationController',
         ]);
@@ -69,6 +71,8 @@ class LocationController extends AbstractController
      */
     public function adminLocation() // Afficher les vehicules louer par les entreprises (option pour calculer les factures)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
+
         return $this->render('location/adminLocation.html.twig', [
             'controller_name' => 'LocationController',
         ]);
@@ -80,6 +84,8 @@ class LocationController extends AbstractController
      */
     public function adminAjouter() // Ajouter un vehicule a la flotte avec un formulaire
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
+
         return $this->render('location/adminAjouter.html.twig', [
             'controller_name' => 'LocationController',
         ]);
