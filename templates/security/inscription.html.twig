@@ -2,28 +2,14 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block stylesheets %}
-<style>
-    .content{
-        width:fit-content;
-        min-width: 400px;
-        margin:auto;
-        padding:15px;
-        border: 2px solid #ffb84d ;
-        border-radius: 25px;
-        color: white;
-        background-color: #5195A8;
-    }
-
-    h2{
-        text-align:center;
-        margin-top:100px !important;
-    }
-</style>
+<link rel="stylesheet" href="/CSS/register.css">
 {% endblock %}
 
 {% block body %}
-    <h2>Formulaire d'inscription</h2>
     <div class="content">
+        <div class="titre">
+            <h2>Formulaire d'inscription</h2>
+        </div>
         {{ form_start(form) }}
             {{ form_row(form.nom, {'attr' : {'placeholder': 'Entreprise'}}) }}
             {{ form_row(form.email, {'attr' : {'placeholder': 'nom@email.com'}}) }}

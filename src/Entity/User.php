@@ -111,7 +111,7 @@ class User implements UserInterface
     }
 
     public function getSalt(){
-        // TODO
+        return "9=Y5K|qiCp";
     }
 
     public function getUserName(){

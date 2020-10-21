@@ -200,13 +200,8 @@ body {
 
 .button:hover span {
     padding-right: 25px;
+    opacity: 0.8;
 }
-
-.button:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-
 
 /*---- BOUTON BLANC ----*/
 
@@ -337,14 +332,18 @@ body {
     border-radius: 25px;
 }
 
-.annonce:hover{
-    background-color: rgb(246, 246, 246);
+.annonce:hover {
+    background-color: rgb(244, 244, 244);
 }
 
 .int-annonce {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 8%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 4%;
+    padding-right: 4%;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -353,24 +352,37 @@ body {
     line-height: 1.8em;
 }
 
-.int-annonce .sous-annonce {
-    display: inline;
+.description{
+    width: 45%;
 }
 
-.sous-annonce img {
+.description h2{
+    font-size: 40px;
+    margin-bottom: 22px;
+    color: #f87c00;
+}
+
+.carac{
+    font-size: 22px;
+    margin-left: 8%;
+    margin-bottom: 18px;
+}
+
+.description button{
+    float: right;
+    float: inline-end;
+    padding: 15px 30px 15px 30px;
+    color: #eaa903;
+    border-color: #eaa903;
+    font-size: 20px;
+}
+
+.image{
+    width: 55%;
+}
+
+.image img{
     width: 100%;
-    height: auto;
-}
-
-.sous-annonce h2 {
-    margin-top: 10px;
-}
-
-
-
-.int-annonce button {
-    margin-top: 10px;
-    margin-left: 220px;
 }
 
 

@@ -71,7 +71,7 @@
 }
 
 #logo{
-    width: 75px;
+    width: 150px;
 }
 #nav{
     text-align: right;
@@ -128,8 +128,10 @@ nav a{
 }
 
 #footer img {
-    width: 10%;
+    width: 14%;
     position: absolute;
+    background-color: white;
+    border-radius: 26px;
 }
 
 .icons{

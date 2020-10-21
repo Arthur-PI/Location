@@ -12,18 +12,18 @@ INSERT INTO `vehicule` (modele, prix, carac, quantite, image) VALUES
     ("M340", 60, '{"marque": "BMW", "couleur": "Noir", "boite": "Automatique", "moteur": "Hybride", "nbPlaces": "5", "nbPortes": "5"}', 11, "https://www.sixt.fr/fileadmin/files/global/user_upload/fleet/png/350x200/bmw-M340i-4d-schwarz-2019.png");
 
 INSERT INTO user (nom, num_user, password, email) VALUES
-    ('admin', 'admin', 'o9199t20VucA7fWYY9+IMZpb89HG+JZjLeWjiilrpho=', 'admin@gmail.com'),
-    ('Jean', '101', 'OIVUmQUF76S95OK9S4EjkPeWAdV5EhCWEv8h+I/WL8s=', 'jean_neymar@gmail.com'),
-    ('Alex', '102', 'FeEVbY0pdx1XQv3mTi+B5gieGaexx12B0ezm1EGrcLQ=', 'alex_terrieur@gmail.com'),
-    ('Alain', '103', 'oM/3ITqeJmJGzvNXVu1Rq8ntTPD6/a6WaZrw1hhfL7E=', 'alain_parfait@gmail.com'),
-    ('Mehdi', '104', 'o2nESreCUxaI4zlPH5wzlveZ+w1b/X1vt5HlRSBg0MY=', 'mehdi_cament@gmail.com'),
-    ('Sacha', '105', 'mibhNqcQpjk/qBB1bxUXUwvJh4fqfwWar/GVLVdEQsQ=', 'sacha_touille@gmail.com'),
-    ('Lena', '105', '3mT8jbyTFpfwldE6GBycIdHDas6e3/u2cWwnleWMjao=', 'lena_rines@gmail.com'),
-    ('Eve', '106', 'nkwh0+UTX28pwUEQ1C13WdhVPSLbgpkqWNr4n22U1QY=', 'eve_rest@gmail.com'),
-    ('Lucie', '107', 'luBk94ny091sDLfE72OfquOJSKC13+mSSeXtMKoG5bM=', 'lucie_fer@gmail.com'),
-    ('Jacques', '108', 'HRvx4ggYGFknfpt4VJytHE96HAx3qboAI/d8B1Sj93Y=', 'jacques_ouzi@gmail.com'),
-    ('Guy', '109', '/lTlYwsbRLgeThRPmVqwecPGJkwo2IxJLT+rG+GORms=', 'guy_mauve@gmail.com'),
-    ('Terry', '110', '4eByo7UDR98XU1YJIBYdmKyqdLJKT4OUIGCF4CSGBj4=', 'terry_golo@gmail.com');
+    ('admin', 'admin', '$2y$13$N4cenjkG2zZItYdeVYiDoO/htJxG0pitgl34FEVLTTHnypKkaifx.', 'admin@gmail.com'),
+    ('Jean', '101', '$2y$13$U63dZXqNLx5MWhsHuk5WU.W403HTIUrHGtAabfM8aiNjKb9D9TzSS', 'jean_neymar@gmail.com'),
+    ('Alex', '102', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'alex_terrieur@gmail.com'),
+    ('Alain', '103', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'alain_parfait@gmail.com'),
+    ('Mehdi', '104', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'mehdi_cament@gmail.com'),
+    ('Sacha', '105', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'sacha_touille@gmail.com'),
+    ('Lena', '105', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'lena_rines@gmail.com'),
+    ('Eve', '106', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'eve_rest@gmail.com'),
+    ('Lucie', '107', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'lucie_fer@gmail.com'),
+    ('Jacques', '108', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'jacques_ouzi@gmail.com'),
+    ('Guy', '109', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'guy_mauve@gmail.com'),
+    ('Terry', '110', '$2y$13$6GjD75Y.5nlkou3kesdjEeKrnVd227xqhugUXMmtIGixDnmpaeahG', 'terry_golo@gmail.com');
 
 INSERT INTO facture (id_user, id_vehic, date_d, date_f, montant, payee) VALUES
     ('101', '2', '2020-09-20 10:01:00', '2020-10-20 10:01:00', 1100, '0'),

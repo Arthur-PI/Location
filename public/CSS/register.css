@@ -1,0 +1,42 @@
+.content{
+    max-width: 860px;
+    min-width: 420px;
+    width: 66%;
+    margin: auto;
+    background-color: white;
+    border-radius: 26px;
+    padding: 46px 4% 46px 4%;
+}
+
+.titre{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #ffbc6b;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.titre h2{
+    font-size: 46px;
+    color: white;
+}
+
+form{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+button{
+    font-size: 24px !important;
+    margin-left: 80% !important;
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+    background-color: #ffbc6b !important;
+    background-image: none !important;
+    border: none !important;
+}
+
+button:hover{
+    opacity: 0.8;
+}

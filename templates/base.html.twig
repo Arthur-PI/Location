@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
         <title>{% block title %}Accueil{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="/CSS/navbar.css">
+        <link rel="stylesheet" href="/CSS/general.css">
         <link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -28,9 +28,22 @@
             </div>
             <div id="navbar">
                 <div id="allnav">
-                    <img id="logo" src="https://zupimages.net/up/20/43/h897.png">
+                    <img id="logo" src="/img/logo.png">
                     <nav id="nav">
-                        {% if not app.user %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <div class="menu">
+                            <a href=" {{path('admin_vehicule')}} ">Le Stock</a>
+                        </div>
+                        <div class="menu">
+                            <a href=" {{path('admin_location')}} ">Voitures en Locations</a>  
+                        </div>
+                        <div class="menu">
+                            <a href=" {{path('admin_ajouter')}} ">Ajouter un Modele</a>
+                        </div>
+                        <div class="menu">
+                            <a id="connexion" href=" {{path('app_logout')}} ">Déconnexion</a>
+                        </div>
+                        {% elseif not app.user %}
                         <div class="menu">
                             <a href=" {{path('home')}} ">Nos Voitures</a>
                         </div>
@@ -69,7 +82,7 @@
                     <p><a href="">Accès et contacts</a> <br> <a href="">Les projets en cours</a> <br> <a href="">Mentions légales</a></p>
                 </div>
                 <div id="footer-img">
-                    <img src="https://zupimages.net/up/20/43/h897.png" alt="">
+                    <img src="/img/logo.png" alt="logo">
                 </div>
             </div>
         </div>
