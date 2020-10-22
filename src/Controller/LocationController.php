@@ -2,15 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Facture;
 use App\Entity\Vehicule;
-use App\Form\RegisterType;
-use App\Repository\VehiculeRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
+use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Response;
 
 class LocationController extends AbstractController
 {
@@ -35,8 +32,8 @@ class LocationController extends AbstractController
     {
 
         $factures = $this->getDoctrine()
-                        ->getRepository(Facture::class)
-                        ->findBy(["idUser" => $this->getUser()->getNumUser()]);
+                         ->getRepository(Facture::class)
+                         ->findBy(["idUser" => $this->getUser()->getNumUser()]);
 
         $repo = $this->getDoctrine()
                      ->getRepository(Vehicule::class);
@@ -89,5 +86,45 @@ class LocationController extends AbstractController
         return $this->render('location/adminAjouter.html.twig', [
             'controller_name' => 'LocationController',
         ]);
+    }
+
+
+    /**
+     * @Route("/facture/{id}", name="make_pdf")
+     */
+    public function makePDF($id, \Knp\Snappy\Pdf $knpSnappy)
+    {   
+        $knpSnappy->setOption("encoding","UTF-8");
+        $knpSnappy->setOption("lowquality",false);
+        $filename = "facture";
+
+        $facture = $this->getDoctrine()
+                        ->getRepository(Facture::class)
+                        ->find($id);
+        
+        $vehicule = $this->getDoctrine()
+                         ->getRepository(Vehicule::class)
+                         ->find($facture->getIdVehic());
+
+        $nbJours = 20;
+        $totalTTC = $nbJours * $vehicule->getPrix();
+        $totalHT = $totalTTC * 0.8;
+
+        $html = $this->renderView('location/facturepdf.html.twig' , array(
+            'facture' => $facture,
+            'vehicule' => $vehicule,
+            'nbJours' => $nbJours,
+            'totalTTC' => $totalTTC,
+            'totalHT' => $totalHT,
+        ));
+        
+        return new Response(
+            $knpSnappy->getOutputFromHtml($html),
+            200,
+            array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
+            )
+        );
     }
 }

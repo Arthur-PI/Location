@@ -1,0 +1,59 @@
+{# ./templates/default/mypdf.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Facture</title>
+    </head>
+    <body>
+        <div class="facture">
+            <div class="loueur">
+                <img src="/img/logo.png" alt="logo">
+                <h3>EASY LOC</h3>
+                <p>
+                    Adresse <br>
+                    Telephone <br>
+                    Email <br>
+                    www.easyloc.fr
+                </p>
+            </div>
+            <div class="entreprise">
+                <p>
+                    {{app.user.username}} <br>
+                    Adresse <br>
+                    Adresse2
+                </p> 
+            </div>
+            <div class="vehicules">
+                <h2> Facture N° {{facture.id}}</h2>
+                <h3>Debut de Location: {{facture.dated | date('d/m/Y')}}</h3>
+                <h3>Fin de Location: {{facture.datef | date('d/m/Y')}}</h3>
+
+                <table>
+                    <td id='table-label'>
+                        <th>Modele du Vehicule</th>
+                        <th>Nb Jours</th>
+                        <th>TVA</th>
+                        <th>Prix/Jour TTC</th>
+                        <th>Total HT</th>
+                        <th>Total TTC</th>
+                    </td>
+                    <td>
+                        <th>{{vehicule.carac['marque']}} {{vehicule.modele}}</th>
+                        <th>{{nbJours}}</th>
+                        <th>20.00 %</th>
+                        <th>{{vehicule.prix}}</th>
+                        <th>{{totalHT}}</th>
+                        <th>{{totalTTC}}</th>
+                    </td>
+                </table>
+            </div>
+            <div class="chiffres">
+                JSP
+            </div>
+            <div class="contact">
+                JSP
+            </div>
+        </div>
+    </body>
+</html>
