@@ -24,4 +24,4 @@ Now go to your PhpMyAdmin select ***location*** database, click import and choos
 
 ## Your good to go '!'
 
-The best way to experience the whole website is to connect as username : ***alex_terrieur@gmail.com*** and password : ***motdepassegeneral***
+The best way to experience the whole website is to connect as ***username : alex_terrieur@gmail.com*** and ***password : motdepassegeneral***
