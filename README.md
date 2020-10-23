@@ -23,3 +23,5 @@ Run `php .\bin\console doctrine:migrations:migrate`
 Now go to your PhpMyAdmin select ***location*** database, click import and choose the ***location.sql*** file in the project directory.  
 
 ## Your good to go '!'
+
+The best way to experience the whole website is to connect as username : ***alex_terrieur@gmail.com*** and password : ***motdepassegeneral***
