@@ -8,7 +8,7 @@
 {% if taille > 0 %}
 <div class="allLoc">
     <div id="titre"><h1>Vehicules loues par {{app.user.username}} </h1></div> 
-    <a id="facture" href=" {{ path('make_pdf', {'id': factures[0].id }) }} "><span class="material-icons ">request_page</span></a> 
+    <a id="facture"><span class="material-icons ">request_page</span></a> 
     <div class="carte">
     {% for i in 0..taille %}
         <div class="annonce">
