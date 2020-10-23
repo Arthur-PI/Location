@@ -10,7 +10,9 @@ Run `symfony check:security`
 ## Database requirements
 
 Make sure to start your server environement like Wamp, Xamp, Mamp etc.  
-Go to .env file and make sure the line `DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/location?serverVersion=5.7` is filed with your database connection requirements.  
+Go to .env file and modify this line the line:  
+`DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/location?serverVersion=5.7`  
+You need to change **db_user**, **db_password** and the serverVersion **5.7** according to your PhpMyAdmin.  
 
 ## Now setup your symfony server and database
 
