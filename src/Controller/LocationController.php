@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Facture;
-use App\Entity\Vehicule;
 use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+
+use App\Entity\Facture;
+use App\Entity\Vehicule;
+use App\Form\AjoutType;
 
 class LocationController extends AbstractController
 {
@@ -79,12 +83,18 @@ class LocationController extends AbstractController
      * @Route("/admin/ajouter", name="admin_ajouter")
      * Ajouter un vehicule a la flotte
      */
-    public function adminAjouter() // Ajouter un vehicule a la flotte avec un formulaire
+    public function adminAjouter(Request $request, EntityManagerInterface $manager) // Ajouter un vehicule a la flotte avec un formulaire
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
 
+        $vehicule = new Vehicule();
+
+        $form = $this->createForm(AjoutType::class, $vehicule);
+
+        $form->handleRequest($request);
+
         return $this->render('location/adminAjouter.html.twig', [
-            'controller_name' => 'LocationController',
+            'form' => $form->createView(),  
         ]);
     }
 }
