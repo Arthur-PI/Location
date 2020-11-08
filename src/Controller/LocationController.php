@@ -7,15 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
-<<<<<<< HEAD
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 use App\Entity\Facture;
 use App\Entity\Vehicule;
 use App\Form\AjoutType;
-=======
-
->>>>>>> 055c4c08fb06fcb68b7cf8fb3be0bd038fadf7f7
 
 class LocationController extends AbstractController
 {
