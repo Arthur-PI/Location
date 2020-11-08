@@ -3,56 +3,74 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+        <link rel="stylesheet" href="/CSS/facture.css">
         <title>Facture</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/2257ebf5f7.js" crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="/img/logo.png" />
     </head>
     <body>
         <div class="facture">
-            <div class="loueur">
-                <img src="/img/logo.png" alt="logo">
-                <h3>EASY LOC</h3>
-                <p>
-                    Adresse <br>
-                    Telephone <br>
-                    Email <br>
-                    www.easyloc.fr
-                </p>
-            </div>
-            <div class="entreprise">
-                <p>
-                    {{app.user.username}} <br>
-                    Adresse <br>
-                    Adresse2
-                </p> 
-            </div>
-            <div class="vehicules">
-                <h2> Facture N° {{facture.id}}</h2>
-                <h3>Debut de Location: {{facture.dated | date('d/m/Y')}}</h3>
-                <h3>Fin de Location: {{facture.datef | date('d/m/Y')}}</h3>
+            <div class="int-facture">
+                <div class="loueur">
+                    <img id="logo" src="/img/logo.png" alt="logo">
+                    <h3>Facture EASY LOC</h3>
+                    <h2>Vendeur</h2>
+                    <p>
+                        Adresse : 143 avenue de Versailles, 75016 Paris <br>
+                        Téléphone : 01 76 53 47 00 <br>
+                        Email : easyloc.location@easyloc.fr <br>
+                        site web : www.easyloc.fr
+                    </p>
+                </div>
+                <div class="entreprise">
+                    <h2>Client</h2>
+                    <p>
+                        Nom : {{app.user.username}} <br>
+                        Email : {#{{app.user.mail}}#}
+                    </p> 
+                </div>
+                <div class="vehicules">
+                    <h2> Facture N° {{facture.id}}</h2>
+                    <h4>Debut de Location: {{facture.dated | date('d/m/Y')}}</h4>
+                    <h4>Fin de Location: {{facture.datef | date('d/m/Y')}}</h4>
 
-                <table>
-                    <td id='table-label'>
-                        <th>Modele du Vehicule</th>
-                        <th>Nb Jours</th>
-                        <th>TVA</th>
-                        <th>Prix/Jour TTC</th>
-                        <th>Total HT</th>
-                        <th>Total TTC</th>
-                    </td>
-                    <td>
-                        <th>{{vehicule.carac['marque']}} {{vehicule.modele}}</th>
-                        <th>{{nbJours}}</th>
-                        <th>20.00 %</th>
-                        <th>{{vehicule.prix}}</th>
-                        <th>{{totalHT}}</th>
-                        <th>{{totalTTC}}</th>
-                    </td>
-                </table>
-            </div>
-            <div class="chiffres">
-                JSP
-            </div>
-            <div class="contact">
-                JSP
+                    <table>
+                        <tr id='table-label'>
+                            <th>Modele du Vehicule</th>
+                            <th>Nb Jours</th>
+                            <th>TVA</th>
+                            <th>Prix/Jour TTC</th>
+                            <th>Total HT</th>
+                            <th>Total TTC</th>
+                        </tr>
+                        <tr>
+                            <td>{{vehicules[i].carac['marque']}} {{vehicule.modele}}</th>
+                            <td>nbJours</th>
+                            <td>20.00 %</th>
+                            <td>{{vehicule.prix}}</th>
+                            <td>vehicule.prix*nbJours/1.2</th>
+                            <td>vehicule.prix*nbJours</th>
+                        </tr>
+                    </table>
+                    <table id="total">
+                        <tr>
+                            <th>Total à payer</th>
+                        </tr>
+                        <tr>
+                            <td>vehicule.prix*nbJours</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="bas bas-1">
+                    <p>Facture émise par EasyLoc, à régler par le client sous 30 jours</p>
+                </div>
+                <div class="bas">
+                    CONTACT - tél : 01 76 53 47 00 - email : easyloc.location@easyloc.fr
+                </div>
             </div>
         </div>
     </body>
