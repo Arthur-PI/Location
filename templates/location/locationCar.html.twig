@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/CSS/home.css">
+{% endblock %}
+
+{% block body %}
+    <div class="corps">
+            <div class="titre-corps">
+                <h2> {{vehicule.carac['marque']}} {{vehicule.modele}} </h2>
+            </div>
+        <div class="int-corps">
+            <div class="contenu-corps">
+                <form method="POST" action=" {{ path('creationfacture') }} " name="dates">
+                    <p>
+                        <label>Date de début : </label>
+                        <input type="date" name="DateDebut" placeholder="MM/DD/YYYY">
+                    </p>
+                    <p>
+                        <label>Date de fin : </label>
+                        <input type="date" name="DateFin" placeholder="MM/DD/YYYY">
+                    </p>
+                    <p>
+                        <input style="position: absolute; visibility: hidden;" value="{{vehicule.prix}}" name="prix">
+                        <input style="position: absolute; visibility: hidden;" value="{{vehicule.id}}" name="id">
+
+                    </p>
+                    
+                <div class="caracteristiques">
+                    <div class="ligne">
+                        <div class="carac-2">
+                            <img class="icons" src="https://img.icons8.com/pastel-glyph/24/000000/gearbox-selector.png"/>
+                            <span>{{vehicule.carac['boite']}}</span>
+                        </div>
+                        <div class="carac-2">
+                            <img class="icons" src="https://img.icons8.com/small/24/000000/engine.png"/>
+                            <span>{{vehicule.carac['moteur']}}<br /></span>
+                        </div>
+                    </div>
+                    <div class="ligne">
+                        <div class="carac-2">
+                            <img class="icons" src="https://img.icons8.com/material-rounded/24/000000/conference-call.png"/>
+                            <span>{{vehicule.carac['nbPlaces']}} Places</span>
+                        </div>
+                        <div class="carac-2">
+                            <img class="icons" src="https://img.icons8.com/material-outlined/24/000000/car-door.png"/>
+                            <span>{{vehicule.carac['nbPortes']}} Portes</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="buttonblanc-2" style="vertical-align:middle"><span>Valider la location à {{vehicule.prix}}$/jour</span></button>
+                </form>
+            </div>
+            <div class="image">
+                <img src="{{vehicule.image}}" alt="imageVoiture">
+            </div>
+        </div>
+    </div>
+{% endblock %}
