@@ -1,5 +1,37 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="/CSS/home.css">
+{% endblock %}
+
 {% block body %}
-    <h1>Page avec toutes les voitures du stock de l'admin</h1>
+{% for vehicule in vehicules %}
+    <div class="annonce">
+        <div class="int-annonce">
+            <div class="description">
+                <h2> {{vehicule.carac['marque']}} {{ vehicule.modele }} </h2>
+                <div class="carac">
+                    <img class="icons" src="https://img.icons8.com/pastel-glyph/24/000000/gearbox-selector.png"/>
+                    <span>{{vehicule.carac['boite']}}</span>
+                </div>
+                <div class="carac">
+                    <img class="icons" src="https://img.icons8.com/small/24/000000/engine.png"/>
+                    <span>{{vehicule.carac['moteur']}}</span>
+                </div>
+                <div class="carac">
+                    <img class="icons" src="https://img.icons8.com/material-rounded/24/000000/conference-call.png"/>
+                    <span>{{vehicule.carac['nbPlaces']}} Places</span>
+                </div>
+                <div class="carac">
+                    <img class="icons" src="https://img.icons8.com/material-outlined/24/000000/car-door.png"/>
+                    <span>{{vehicule.carac['nbPortes']}} Portes</span>
+                </div>
+                <button class="buttonblanc" style="vertical-align:middle"><span>Louer {{vehicule.prix}}$/jour</span></button>
+            </div>
+            <div class="image">
+                <img src="{{ vehicule.image }}" alt="imageVoiture">
+            </div>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}

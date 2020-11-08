@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\VehiculeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VehiculeRepository::class)
@@ -29,6 +30,7 @@ class Vehicule
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThanOrEqual(value = 0)
      */
     private $quantite;
 
@@ -39,6 +41,7 @@ class Vehicule
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\GreaterThanOrEqual(value = 5)
      */
     private $prix;
 
@@ -67,7 +70,7 @@ class Vehicule
     public function setCarac(array $carac): self
     {
         $this->carac = $carac;
-
+        
         return $this;
     }
 
@@ -103,7 +106,6 @@ class Vehicule
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
-
         return $this;
     }
 }

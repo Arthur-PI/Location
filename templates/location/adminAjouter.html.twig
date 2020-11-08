@@ -5,11 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <h1 style="text-align:center;"> Formulaire d'ajout de vehicule</h1>
+    
 
     <div class="content">
+        <h1 style="text-align:center;margin-bottom:20px;"> Formulaire d'ajout de vehicule</h1>
         {{ form_start(form) }}
-            {{form_widget(form)}}
+            {{ form_row(form.modele, {'attr' : {'placeholder': 'Modele'}}) }}
+            {{ form_row(form.carac, {'attr' : {'placeholder': 'marque;boite;couleur;moteur;nbPlaces;nbPortes'}}) }}
+            {{ form_row(form.quantite, {'attr' : {'placeholder': 'n'}}) }}
+            {{ form_row(form.prix, {'attr' : {'placeholder': 'n'}}) }}
+            {{ form_row(form.image)}}
+            <button type="submit" class="btn btn-success">Valider</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}

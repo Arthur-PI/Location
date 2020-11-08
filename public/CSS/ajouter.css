@@ -1,5 +1,6 @@
 .content{
-    width: 50%;
+    width: fit-content;
+    background-color: white;
     margin: auto;
     border: 2px solid #ffbc6b;
     border-radius: 25px;
@@ -7,6 +8,6 @@
 }
 
 form{
-    width: fit-content;
+    width: 80%;
     margin: auto;
 }
