@@ -73,7 +73,6 @@ class LocationController extends AbstractController
      */
     public function monCompte() //  Afficher les vehicules louer par l'entreprise (option pour avoir sa facture et arreter des locations)
     {
-
         $factures = $this->getDoctrine()
                          ->getRepository(Facture::class)
                          ->findBy(["idUser" => $this->getUser()->getNumUser()]);
@@ -133,13 +132,14 @@ class LocationController extends AbstractController
         $vehicule = new Vehicule();
 
         $form = $this->createForm(AjoutType::class, $vehicule);
+        // dump($form);
 
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()){
             $imageFile = $form->get('image')->getData();
 
-            $originalFilename = $form->get('carac')->getData()[0] . $form->get('modele')->getData();
+            $originalFilename = $form->get('carac')->getData()['marque'] . $form->get('modele')->getData();
             $safeFilename = $slugger->slug($originalFilename);
             $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
             
@@ -151,11 +151,11 @@ class LocationController extends AbstractController
             $vehicule->setImage('/img/voitures/' . $newFilename);
             $vehicule->setCarac($vehicule->getCarac());
             
-            dump($vehicule);
-            // $manager->persist($vehicule);
-            // $manager->flush();
+            // dump($vehicule);
+            $manager->persist($vehicule);
+            $manager->flush();
                 
-            // return $this->redirectToRoute('admin_vehicule');
+            return $this->redirectToRoute('admin_vehicule');
         }
         // dump($form, $vehicule);
             
@@ -182,8 +182,6 @@ class LocationController extends AbstractController
         $prixTotal = round($vehicule->getPrix() * $days, 2);
         $prixHT = round($prixTotal / 1.2, 2);
 
-        
-        
         return $this->render('location/facturepdf.html.twig', [
             'facture' => $facture,
             'vehicule' => $vehicule,
@@ -221,9 +219,7 @@ class LocationController extends AbstractController
             $prixTotalTotal += $prixTotal[$i];
             $prixHT[$i] = round($prixTotal[$i] / 1.2, 2);
         }       
-
-        dump($days, $prixTotal);
-        
+    
         return $this->render('location/facturepdftotal.html.twig', [
             'factures' => $factures,
             'vehicules' => $vehicules,

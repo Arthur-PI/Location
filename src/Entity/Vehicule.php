@@ -25,6 +25,7 @@ class Vehicule
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\Count(min = 6, max = 6)
      */
     private $carac = [];
 

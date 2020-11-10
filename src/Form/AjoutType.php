@@ -26,7 +26,7 @@ class AjoutType extends AbstractType
                 'label' => 'Nombre de voitures'
             ])
             ->add('image', FileType::class, [
-                'label' => 'image',
+                'label' => 'Image',
                 'mapped' => 'false',
                 'constraints' => [
                     new File([
@@ -48,6 +48,7 @@ class AjoutType extends AbstractType
             },
             function ($stringToArray){
                 $tmp = explode(',', $stringToArray);
+                if (count($tmp) != 6) return [];
                 return array(
                     'marque' => $tmp[0],
                     'boite' => $tmp[1],
