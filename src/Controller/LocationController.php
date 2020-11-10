@@ -165,15 +165,73 @@ class LocationController extends AbstractController
     }
 
     /**
-     * @Route("/account/facture", name="gen_facture")
+     * @Route("/account/facture/id/{idFacture}", name="gen_facture")
      */
-    public function facture() //ouvrir une facture
+    public function facture($idFacture) //ouvrir une facture
     {
-        /*$facture = $this->getDoctrine()
-                         ->getRepository(Facture::class)
-                         ->findBy(["idUser" => $this->getUser()->getNumUser()]);*/
-        return $this->render('location/facturepdf.html.twig' /*[
+        $facture = $this->getDoctrine()
+                          ->getRepository(Facture::class)
+                          ->find($idFacture);
+
+        $vehicule = $this->getDoctrine()
+                         ->getRepository(Vehicule::class)
+                         ->find($facture->getIdVehic());
+
+
+        $days = $facture->getDateD()->diff($facture->getDateF())->d;
+        $prixTotal = round($vehicule->getPrix() * $days, 2);
+        $prixHT = round($prixTotal / 1.2, 2);
+
+        
+        
+        return $this->render('location/facturepdf.html.twig', [
             'facture' => $facture,
-        ]*/);
+            'vehicule' => $vehicule,
+            'prixHT' => $prixHT,
+            'prixTotal' => $prixTotal,
+            'days' => $days,
+        ]);
+    }
+
+    /**
+     * @Route("/account/facture/user", name="gen_facture_totale")
+     */
+    public function facture_totale() //ouvrir une facture
+    {
+        $factures = $this->getDoctrine()
+                         ->getRepository(Facture::class)
+                         ->findBy(["idUser" => $this->getUser()->getNumUser()]);
+
+        $repoVehic = $this->getDoctrine()
+                          ->getRepository(Vehicule::class);
+
+        $vehicules = [];
+        $prixTotal = [];
+        $prixHT = [];
+        $prixTotalTotal = 0;
+        $days = [];
+
+        $taille = count($factures);
+
+        for ($i = 0; $i < $taille; $i++) 
+        {
+            $vehicules[$i] = $repoVehic->find($factures[$i]->getIdVehic());
+            $days[$i] = $factures[$i]->getDateD()->diff($factures[$i]->getDateF())->d;
+            $prixTotal[$i] = $vehicules[$i]->getPrix() * $days[$i];
+            $prixTotalTotal += $prixTotal[$i];
+            $prixHT[$i] = round($prixTotal[$i] / 1.2, 2);
+        }       
+
+        dump($days, $prixTotal);
+        
+        return $this->render('location/facturepdftotal.html.twig', [
+            'factures' => $factures,
+            'vehicules' => $vehicules,
+            'prixHT' => $prixHT,
+            'prixTotal' => $prixTotal,
+            'prixTotalTotal' => $prixTotalTotal,
+            'days' => $days,
+            'taille' => $taille-1,
+        ]);
     }
 }

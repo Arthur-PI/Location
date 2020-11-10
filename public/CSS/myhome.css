@@ -6,6 +6,7 @@ h1 {
     font-size: 60px;
     color:  #f87c00;
     line-height: 1.3em;
+    margin-top: 10px !important;
     
 }
 
@@ -328,11 +329,11 @@ body {
 
 .annonce {
     background-color: white;
-    max-width: 40%;
+    width: 48%;
     border-radius: 25px;
     border: 1px solid grey;
     margin-top: 20px;
-    padding: 10px;
+    padding: 10px 0px 10px 10px;
 }
 
 .int-annonce {
@@ -376,7 +377,7 @@ body {
 }
 
 .allLoc{
-    width: 63%;
+    width: 80%;
     margin: auto;
     margin-top: 30px;
     margin-bottom: 30px;

@@ -34,9 +34,7 @@
                     </p> 
                 </div>
                 <div class="vehicules">
-                    <h2> Facture N° {{facture.id}}</h2>
-                    <h4>Debut de Location: {{facture.dated | date('d/m/Y')}}</h4>
-                    <h4>Fin de Location: {{facture.datef | date('d/m/Y')}}</h4>
+                    <h2>Facture</h2>
 
                     <table>
                         <tr id='table-label'>
@@ -47,21 +45,23 @@
                             <th>Total HT</th>
                             <th>Total TTC</th>
                         </tr>
+                        {% for i in 0..taille %}
                         <tr>
-                            <td>{{vehicule.carac['marque']}} {{vehicule.modele}}</th>
-                            <td>{{days}}</th>
+                            <td>{{ vehicules[i].carac['marque'] }} {{ vehicules[i].modele }}</th>
+                            <td>{{ days[i] }}</th>
                             <td>20.00 %</th>
-                            <td>{{vehicule.prix}}</th>
-                            <td>{{prixHT}}</th>
-                            <td>{{prixTotal}}</th>
+                            <td>{{ vehicules[i].prix }}</th>
+                            <td>{{ prixHT[i] }}</th>
+                            <td>{{ prixTotal[i] }}</th>
                         </tr>
+                        {% endfor %}
                     </table>
                     <table id="total">
                         <tr>
                             <th>Total à payer</th>
                         </tr>
                         <tr>
-                            <td>{{prixTotal}}</td>
+                            <td>{{prixTotalTotal}} €</td>
                         </tr>
                     </table>
                 </div>

@@ -4,6 +4,7 @@ body {
 
 .facture {
     margin: 60px 90px;
+    /* Taille d'un pdf A4: 595px */
     padding: 20px;
     background-color: white;
 }
