@@ -326,7 +326,6 @@ body {
 }
 
 /* ANNONCES */
-
 .annonce {
     background-color: white;
     width: 48%;
@@ -334,6 +333,29 @@ body {
     border: 1px solid grey;
     margin-top: 20px;
     padding: 10px 0px 10px 10px;
+}
+.annonce:hover {
+    background-color: rgb(242, 242, 242);
+}
+
+.annonce:hover h2{
+    color: #894808;
+}
+
+.annonce:hover .nom-carac{
+    color: #894808;
+}
+
+.annonce:hover .payee{
+    color: #0dbf03;
+}
+
+.annonce:hover .nonpayee{
+    color: #d31f04;
+}
+
+.metadata{
+    margin-bottom: 10px;
 }
 
 .int-annonce {

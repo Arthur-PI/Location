@@ -1,13 +1,21 @@
 /*---- GLOBALE ----*/
 
+.titre{
+    text-align: center;
+}
+
 h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    text-transform: uppercase;
     font-size: 60px;
-    color:  #f87c00 !important;
+    color:  #f87c00;
     line-height: 1.3em;
-    margin-bottom: 15px;
+    margin-top: 10px !important;
+    
+}
+
+h3 {
+    padding-bottom: 10px;
 }
 
 * {
@@ -41,18 +49,18 @@ body {
     overflow-x: hidden;
 }
 
-.container {
-    max-width: 1080px;
-    width: 80%;
-    margin: auto;
-}
-
 .ghost {
     display: none !important;
 }
 
 .invisible {
     visibility: hidden;
+}
+#titre {
+    margin-bottom: 15px;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
 }
 
 .titre-blanc {
@@ -63,140 +71,6 @@ body {
     font-size: 36px;
     font-weight: 500;
 }
-
-.corps {
-    background-color: white;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 80% !important;
-    margin: 15px auto;
-    position: relative;
-    border-radius: 25px;
-}
-
-.int-corps {
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    padding-left: 4%;
-    padding-right: 4%;
-    width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #353740;
-    line-height: 1.8em;
-}
-
-.contenu-corps{
-    width: 45%;
-}
-
-.titre-corps{
-    width: 100%;
-}
-
-.titre-corps h2 {
-    font-size: 40px;
-    margin-bottom: 15px;
-    padding-top: 25px;
-    color: #f87c00;
-    text-align: center;
-}
-
-.carac-2{
-    display: table-cell;
-    width: 36%;
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-.ligne {
-    display: table-row;
-    text-align: center;
-}
-
-.caracteristiques {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 30px;
-}
-
-.contenu-corps form  { 
-    display: table;  
-    font-size: 18px;
-    width: 100%;
-    margin-bottom: 5px;    
-}
-
-.contenu-corps label { 
-    display: inline-block !important;
-    line-height: 100%;
-    text-align: center;
-    vertical-align: center !important;
-    margin: 0;
-}
-
-.contenu-corps input {
-    text-align: right;
-    padding: 5px;
-    border: solid 1px;
-    border-radius: 10px;
-    margin-right: 5%;
-}
-
-#dateFin {
-    margin-bottom:30%;
-}
-
-.buttonblanc-2 {
-    background-color: transparent;
-    border-radius: 100px;
-    border: 2px solid black;
-    color: black;
-    text-align: center;
-    font-size: 16px;
-    transition: all 300ms ease 0ms;
-    cursor: pointer;
-    padding: 0.3em 1em;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 5px;
-    width: 100%;
-}
-
-.buttonblanc-2 span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.4s;
-}
-
-.buttonblanc-2:hover {
-    background-color: rgb(233, 233, 233);
-}
-
-.buttonblanc-2:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-
-
-.contenu-corps button{
-    float: right;
-    float: inline-end;
-    padding: 15px;
-    color: #eaa903;
-    border-color: #eaa903;
-    font-size: 20px;
-}
-
 
 /* Media Queries titres */
 
@@ -330,8 +204,13 @@ body {
 
 .button:hover span {
     padding-right: 25px;
-    opacity: 0.8;
 }
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
 
 /*---- BOUTON BLANC ----*/
 
@@ -454,67 +333,111 @@ body {
 
 .annonce {
     background-color: white;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 60% !important;
-    margin: 15px auto;
-    position: relative;
+    width: 48%;
     border-radius: 25px;
+    border: 1px solid grey;
+    margin-top: 20px;
+    padding: 10px 0px 10px 10px;
 }
 
 .annonce:hover {
-    background-color: rgb(244, 244, 244);
+    background-color: rgb(242, 242, 242);
+}
+
+.annonce:hover h2{
+    color: #894808;
+}
+
+.annonce:hover .nom-carac{
+    color: #894808;
+}
+
+.annonce:hover .payee{
+    color: #0dbf03;
+}
+
+.annonce:hover .nonpayee{
+    color: #d31f04;
+}
+
+.metadata{
+    margin-bottom: 10px;
 }
 
 .int-annonce {
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-left: 4%;
-    padding-right: 4%;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 16px;
     color: #353740;
     line-height: 1.8em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
 }
 
-.description{
+.stats{
     width: 45%;
-}
-
-.description h2{
-    font-size: 40px;
-    margin-bottom: 22px;
-    color: #f87c00;
-}
-
-.carac{
-    font-size: 22px;
-    margin-left: 8%;
-    margin-bottom: 18px;
-}
-
-.description button{
-    float: right;
-    float: inline-end;
-    padding: 15px 30px 15px 30px;
-    color: #eaa903;
-    border-color: #eaa903;
-    font-size: 20px;
 }
 
 .image{
     width: 55%;
 }
 
-.image img{
+.image img {
     width: 100%;
+    height: auto;
 }
 
+.stats h2 {
+    font-size: 24px;
+}
+
+
+.int-annonce button {
+    margin-top: 10px;
+    margin-left: 220px;
+}
+
+.carac{
+    margin-left: 20px;
+}
+
+.allLoc{
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px;
+    padding-bottom: 30px;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+
+.money{
+    margin-top: 15px;
+}
+
+
+metadata{
+    opacity: 0.8;
+    font-size: 14px;
+    display: block;
+    line-height: 120%;
+}
+
+.carte{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#facture{
+    float: right;
+}
 
 /* Media Queries rentre */
 
@@ -529,10 +452,3 @@ body {
     }
 }
 
-.date {
-    color: #f87c00;
-    font-size: 24px;
-    margin: 0;
-    line-height: 100%;
-    padding-top: 6px;
-}

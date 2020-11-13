@@ -1,5 +1,63 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="/CSS/location_admin.css">
+{% endblock %}
+
 {% block body %}
-    <h1>Page avec toutes les voitures de l'admin en location par les Entreprises</h1>
+<div class="titre">
+    <h1> VEHICULES EN COURS DE LOCATION </h1>
+</div>
+{% if taille > 0 %}
+    {% for i in 0..taille %}
+    {% if factures[i]|length > 0 %}
+    <div class="allLoc">
+        <div id="titre"><h1>Vehicules loues par {{ users[i] }} </h1></div>
+            <div class="carte">
+                {% for j in 0..factures[i]|length - 1 %}
+                <div class="annonce">
+                    <h2> {{vehicules[i][j].carac['marque']}} {{ vehicules[i][j].modele }} </h2>
+                    <div class="int-annonce">
+                        <div class="stats">
+                            <div class="metadata">
+                                <metadata>Date debut: {{factures[i][j].dated | date('d/m/Y')}} </metadata>
+                                <metadata>Date fin: {{factures[i][j].datef | date('d/m/Y')}} </metadata>
+                            </div>
+                            <div class="carac">
+                                <img class="icons" src="https://img.icons8.com/pastel-glyph/24/000000/gearbox-selector.png"/>
+                                <span class="nom-carac">{{vehicules[i][j].carac['boite']}}</span>
+                            </div>
+                            <div class="carac">
+                                <img class="icons" src="https://img.icons8.com/small/24/000000/engine.png"/>
+                                <span class="nom-carac">{{vehicules[i][j].carac['moteur']}}</span>
+                            </div>
+                            <div class="carac">
+                                <img class="icons" src="https://img.icons8.com/material-rounded/24/000000/conference-call.png"/>
+                                <span class="nom-carac">{{vehicules[i][j].carac['nbPlaces']}} Places</span>
+                            </div>
+                            <div class="carac">
+                                <img class="icons" src="https://img.icons8.com/material-outlined/24/000000/car-door.png"/>
+                                <span class="nom-carac">{{vehicules[i][j].carac['nbPortes']}} Portes</span>
+                            </div>
+                            {% if factures[i][j].payee %}
+                            <div class="money carac payee">
+                                <img src="https://img.icons8.com/ios/36/000000/check-dollar.png"/>
+                            {% else %}
+                            <div class="money carac nonpayee">
+                                <img src="https://img.icons8.com/ios/36/000000/delete-dollar.png"/>
+                            {% endif %}
+                                <span>{{factures[i][j].montant}}</span>
+                            </div>
+                        </div>
+                        <div class="image">
+                            <img src="{{ vehicules[i][j].image }}" alt="imageVoiture">
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div> 
+    {% endif %}
+    {% endfor %} 
+{% endif %}
 {% endblock %}

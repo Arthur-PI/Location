@@ -102,14 +102,6 @@ body {
     width: 100%;
 }
 
-.titre-corps h2 {
-    font-size: 40px;
-    margin-bottom: 35px;
-    padding-top: 25px;
-    color: #f87c00;
-    text-align: center;
-}
-
 .carac-2{
     display: table-cell;
     width: 50%;
@@ -487,7 +479,7 @@ body {
     width: 45%;
 }
 
-.description h2{
+.description .nom-voiture{
     font-size: 40px;
     margin-bottom: 34px;
     margin-top: 20px;
@@ -500,8 +492,12 @@ body {
     margin-bottom: 18px;
 }
 
-#disponible {
-    color: #b7712c;
+.disponible {
+    color: #088904;
+}
+
+.indisponible {
+    color: #820101;
 }
 
 .description button{

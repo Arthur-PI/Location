@@ -31,7 +31,7 @@ class VehiculeRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             'SELECT v
             FROM App\Entity\Vehicule v
-            WHERE v.quantite > 0
+            WHERE v.quantite > 0 AND v.disponible = 0
             ORDER BY v.prix ASC'
         );
 

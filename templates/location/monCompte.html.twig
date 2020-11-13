@@ -16,30 +16,33 @@
             <h2> {{vehicules[i].carac['marque']}} {{ vehicules[i].modele }} </h2>
             <div class="int-annonce">
                 <div class="stats">
-                    <metadata>Date debut: {{factures[i].dated | date('d/m/Y')}} </metadata>
-                    <metadata>Date fin: {{factures[i].datef | date('d/m/Y')}} </metadata>
+                    <div class="metadata">
+                        <metadata>Date debut: {{factures[i].dated | date('d/m/Y')}} </metadata>
+                        <metadata>Date fin: {{factures[i].datef | date('d/m/Y')}} </metadata>
+                    </div>
                     <div class="carac">
                         <img class="icons" src="https://img.icons8.com/pastel-glyph/24/000000/gearbox-selector.png"/>
-                        <span>{{vehicules[i].carac['boite']}}</span>
+                        <span class="nom-carac">{{vehicules[i].carac['boite']}}</span>
                     </div>
                     <div class="carac">
                         <img class="icons" src="https://img.icons8.com/small/24/000000/engine.png"/>
-                        <span>{{vehicules[i].carac['moteur']}}</span>
+                        <span class="nom-carac">{{vehicules[i].carac['moteur']}}</span>
                     </div>
                     <div class="carac">
                         <img class="icons" src="https://img.icons8.com/material-rounded/24/000000/conference-call.png"/>
-                        <span>{{vehicules[i].carac['nbPlaces']}} Places</span>
+                        <span class="nom-carac">{{vehicules[i].carac['nbPlaces']}} Places</span>
                     </div>
                     <div class="carac">
                         <img class="icons" src="https://img.icons8.com/material-outlined/24/000000/car-door.png"/>
-                        <span>{{vehicules[i].carac['nbPortes']}} Portes</span>
+                        <span class="nom-carac">{{vehicules[i].carac['nbPortes']}} Portes</span>
                     </div>
-                    <div class="money carac">
-                        {% if factures[i].payee %}
+                    {% if factures[i].payee %}
+                    <div class="money carac payee">
                         <img src="https://img.icons8.com/ios/36/000000/check-dollar.png"/>
-                        {% else %}
+                    {% else %}
+                    <div class="money carac nonpayee">
                         <img src="https://img.icons8.com/ios/36/000000/delete-dollar.png"/>
-                        {% endif %}
+                    {% endif %}
                         <span>{{factures[i].montant}}</span>
                     </div>
                     <a id="facture" href="{{path('gen_facture',{'idFacture': factures[i].id})}}"><span class="material-icons ">request_page</span></a> 

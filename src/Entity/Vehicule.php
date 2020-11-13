@@ -46,6 +46,11 @@ class Vehicule
      */
     private $prix;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $disponible;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +112,18 @@ class Vehicule
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+        return $this;
+    }
+
+    public function getDisponible(): ?bool
+    {
+        return $this->disponible;
+    }
+
+    public function setDisponible(bool $disponible): self
+    {
+        $this->disponible = $disponible;
+
         return $this;
     }
 }

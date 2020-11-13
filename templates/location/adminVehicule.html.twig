@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block body %}
-{% for i in 0..taille %}
+<h1 style="text-align: center; color: black!important; font-weight: 500; margin-bottom: 50px;"><strong>Le stock</strong></h1>
+{% for i in 0..taille %} 
     <div class="annonce">
         <div class="int-annonce">
             <div class="description">
-                <h2> {{vehicules[i].carac['marque']}} {{ vehicules[i].modele }} </h2>
+                <h2 class="nom-voiture"> {{vehicules[i].carac['marque']}} {{ vehicules[i].modele }} </h2>
                 <div class="carac">
                     <img class="icons" src="https://img.icons8.com/pastel-glyph/24/000000/gearbox-selector.png"/>
                     <span>{{vehicules[i].carac['boite']}}</span>
@@ -26,8 +27,14 @@
                     <img class="icons" src="https://img.icons8.com/material-outlined/24/000000/car-door.png"/>
                     <span>{{vehicules[i].carac['nbPortes']}} Portes</span>
                 </div>
+                {% if vehicules[i].disponible == 0 %}
                 <div class="dispo">
-                    <h2 id="disponible">Disponibles: {{ vehicules[i].quantite }} / {{total[i]}}</h2>
+                    <h2 class="disponible">Disponibles: {{ vehicules[i].quantite }} / {{total[i]}}</h2>
+                {% else %}
+                <div class="dispo">
+                    <h2 class="indisponible">Indisponibles: {{ vehicules[i].quantite }} / {{total[i]}}</h2>
+                {% endif %}
+                    {# <a href="{{ path() }}"></a> #}
                 </div>
             </div>
             <div class="image">
