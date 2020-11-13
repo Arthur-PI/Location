@@ -47,12 +47,13 @@ class LocationController extends AbstractController
      * @Route("/yay", name="creationfacture")
      */
     public function creationFacture(Request $request, EntityManagerInterface $manager) {
-        //return $this->redirectToRoot('louervoiture', $vehicule.getId());
         dump($request);
         $dateD = $request->request->get('DateDebut');
         $dateF = $request->request->get('DateFin');
         $prix = $request->request->get('prix');
-        if (strlen($dateD) > 0 && strlen($dateF) > 0 ) {
+        dump($dateD, $dateF);
+        if (strlen($dateD) > 0 && strlen($dateF) > 0) {
+            $vehic = $this->getDoctrine->getRepository(Vehicule::class)->find($request->request->get('id'));
             $dateD = new \DateTime($dateD);
             $dateF = new \DateTime($dateF);
             $facture = new Facture();
@@ -63,8 +64,14 @@ class LocationController extends AbstractController
                     ->setDateF($dateF)
                     ->setPayee(False);
             $manager->persist($facture);
+            $vehic->setQuantite($vehic->getQuantite() - 1);
             $manager->flush();
             return $this->redirectToRoute("moncompte");
+        }
+        else{
+            return $this->redirectToRoute("moncompte", [
+                'id', $request->request->get('id'),
+            ]);
         }
     }
 
@@ -104,8 +111,17 @@ class LocationController extends AbstractController
                           ->getRepository(Vehicule::class)
                           ->findAll();
 
+        $total = [];
+        $i = 0;
+        foreach($vehicules as $vehicule){
+            $total[$i] = $vehicule->getQuantite() + rand(0, 5);
+            $i++;
+        }
+
         return $this->render('location/adminVehicule.html.twig', [
             'vehicules' => $vehicules,
+            'total' => $total,
+            'taille' => count($total)-1,
         ]);
     }
 
