@@ -14,7 +14,7 @@ Go to .env file and modify this line the line:
 `DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/location?serverVersion=5.7`  
 You need to change **db_user**, **db_password** and the serverVersion **5.7** according to your PhpMyAdmin.  
 
-## Now setup your symfony server and database
+## Now setup your symfony database FOR THE FIRST TIME
 
 Now run this command to start the symfony server `symfony server:start`  
 Open a new terminal and run `php .\bin\console doctrine:database:create`  
