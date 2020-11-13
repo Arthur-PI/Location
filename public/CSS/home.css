@@ -112,14 +112,15 @@ body {
 
 .carac-2{
     display: table-cell;
-    width: 50%;
+    width: 100%;
     font-size: 16px;
-    margin-bottom: 18px;
-    padding-left: 20px;
+    margin-bottom: 21px;
+    padding-left: 20%;
 }
 
 .ligne {
     display: table-row;
+    text-align: center;
 }
 
 .caracteristiques {
@@ -169,6 +170,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 5px;
+    width: 100%;
 }
 
 .buttonblanc-2 span {
