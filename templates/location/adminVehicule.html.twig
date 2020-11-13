@@ -34,7 +34,7 @@
                 <div class="dispo">
                     <h2 class="indisponible">Indisponibles: {{ vehicules[i].quantite }} / {{total[i]}}</h2>
                 {% endif %}
-                    {# <a href="{{ path() }}"></a> #}
+                    <a href="{{ path('modiferDispo', {'idVehic': vehicules[i].id }) }}">Changer</a>
                 </div>
             </div>
             <div class="image">

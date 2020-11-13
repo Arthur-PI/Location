@@ -132,6 +132,23 @@ class LocationController extends AbstractController
 	}
 
 	/**
+	 * @Route("/admin/modifier", name="modiferDispo")
+	 */
+	public function adminModifierDispo(Request $request)
+	{
+		$this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
+		
+		$manager = $this->getDoctrine()->getManager();
+
+		$vehicule = $manager->getRepository(Vehicule::class)->find($request->query->get('idVehic'));
+		
+		$vehicule->inverserDispo();
+		$manager->flush();
+
+		return $this->redirectToRoute('admin_vehicule');
+	}
+
+	/**
 	 * @Route("/admin/location", name="admin_location")
 	 */
 	public function adminLocation() // Afficher les vehicules louer par les entreprises (option pour calculer les factures)
@@ -252,6 +269,12 @@ class LocationController extends AbstractController
 		$repoVehic = $this->getDoctrine()
 						  ->getRepository(Vehicule::class);
 
+		$discount = 1;
+		$remise = false;
+		if (count($factures) >= 4){
+			$discount = 0.9;
+			$remise = true;
+		}
 		$vehicules = [];
 		$prixTotal = [];
 		$prixHT = [];
@@ -263,11 +286,12 @@ class LocationController extends AbstractController
 		for ($i = 0; $i < $taille; $i++) 
 		{
 			$vehicules[$i] = $repoVehic->find($factures[$i]->getIdVehic());
-			$days[$i] = $factures[$i]->getDateD()->diff($factures[$i]->getDateF())->d;
-			$prixTotal[$i] = $vehicules[$i]->getPrix() * $days[$i];
+			$days[$i] = $factures[$i]->getDateD()->diff($factures[$i]->getDateF());
+			$days[$i] = $days[$i]->d + $days[$i]->m * 30;
+			$prixTotal[$i] = $discount * $vehicules[$i]->getPrix() * $days[$i];
 			$prixTotalTotal += $prixTotal[$i];
 			$prixHT[$i] = round($prixTotal[$i] / 1.2, 2);
-		}	   
+		}
 	
 		return $this->render('location/facturepdftotal.html.twig', [
 			'factures' => $factures,
@@ -277,6 +301,7 @@ class LocationController extends AbstractController
 			'prixTotalTotal' => $prixTotalTotal,
 			'days' => $days,
 			'taille' => $taille-1,
+			'discount' => $remise,
 		]);
 	}
 }

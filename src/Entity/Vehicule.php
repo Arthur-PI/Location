@@ -126,4 +126,7 @@ class Vehicule
 
         return $this;
     }
+    public function inverserDispo(){
+        $this->disponible = !$this->disponible;
+    }
 }
