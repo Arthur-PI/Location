@@ -1,4 +1,4 @@
-INSERT INTO `vehicule` (modele, prix, diponible, carac, quantite, image) VALUES
+INSERT INTO `vehicule` (modele, prix, disponible, carac, quantite, image) VALUES
     ("Scenic", 30, 0, '{"marque": "Renault", "couleur": "Gris", "boite": "Manuelle", "moteur": "Essence", "nbPlaces": "5", "nbPortes": "5"}', 11, "https://www.sixt.fr/fileadmin/files/global/user_upload/fleet/png/350x200/renault-grand-scenic-5d-silber-2018.png"),
     ("Kodiaq", 37, 0, '{"marque": "Skoda", "couleur": "Blanc", "boite": "Manuelle", "moteur": "Essence", "nbPlaces": "5", "nbPortes": "5"}', 4, "/img/voitures/skoda-kodiaq-55664.png"),
     ("5008", 50, 0,'{"marque": "Peugeot", "couleur": "Gris", "boite": "Manuelle", "moteur": "Essence", "nbPlaces": "7", "nbPortes": "5"}', 6, "https://www.sixt.fr/fileadmin/files/global/user_upload/fleet/png/350x200/peugeot-5008-5d-grau-2017.png"),
